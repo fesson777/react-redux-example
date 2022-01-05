@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+}
+
+.tab {
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+  transition: border 300ms ease-in-out;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.tab.active {
+  border-bottom-color: var(--color-green);
+  .tab_label {
+    color: var(--color-green);
+  }
+}
+
+.root.vertical {
+  flex-direction: column;
+  .tab {
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
+  }
+}

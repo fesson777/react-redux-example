@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  justify-content: center;
+  .paper {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    min-width: 480px;
+  }
+  .textfield {
+    margin-top: 16px;
+  }
+  .submit_btn {
+    margin-top: 24px;
+    align-self: flex-start;
+  }
+}
