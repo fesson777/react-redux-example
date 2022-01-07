@@ -1,15 +1,14 @@
-import styles from './Login.module.scss';
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState, KeyboardEvent } from 'react';
+import { useDispatch } from 'react-redux';
 import { Paper, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'api/index';
 import { setAuthAction } from 'store/auth/action';
+import styles from './Login.module.scss';
 
 export default function Login() {
   const dispatch = useDispatch();
-  const { token } = useSelector(state => state.auth);
   const navigate = useNavigate();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -42,6 +41,13 @@ export default function Login() {
     }
   }
 
+  function handleKeyUp(e: KeyboardEvent<HTMLInputElement>) {
+    const { key } = e;
+    if (key === 'Enter') {
+      handleSubmit();
+    }
+  }
+
   return (
     <div className={styles.root}>
       <Paper className={styles.paper}>
@@ -60,6 +66,7 @@ export default function Login() {
           value={password}
           onChange={handlePasswordChange}
           className={styles.textfield}
+          onKeyUp={handleKeyUp}
           error={!!error}
           helperText={error}
         />
